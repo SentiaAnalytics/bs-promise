@@ -1,0 +1,13 @@
+{
+  "name": "bs-promise",
+  "version": "0.1.0",
+  "sources": [
+    "src",
+    "test"
+  ],
+  "bs-dependencies" : [
+    "bs-tape"
+      // add your bs-dependencies here 
+  ],
+  "bsc-flags": ["-bs-super-errors"]
+}
