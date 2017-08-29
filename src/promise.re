@@ -9,6 +9,7 @@ external _catch : t 'x 'a => ('x => t 'y 'b) => t 'x 'a = "catch" [@@bs.send];
 external resolve : 'a =>  t 'x 'a = "resolve" [@@bs.val] [@@bs.scope "Promise"];
 external reject : 'err =>  t 'err 'a = "reject" [@@bs.val] [@@bs.scope "Promise"];
 external all : list (t 'err 'a) => t 'err (list 'a) = "all" [@@bs.val] [@@bs.scope "Promise"];
+external _fromjs : Js.Promise.t 'a => ('a => 'a) => t 'x 'a = "then" [@@bs.send];
 let map f p => _map p f;
 let chain f p => _chain p f;
 let catch f p => _catch p (fun x => reject (f x));
@@ -27,3 +28,4 @@ let fromOption err opt => switch opt {
 };
 
 
+let fromJs p => _fromjs p (fun x => x);

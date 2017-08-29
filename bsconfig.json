@@ -2,12 +2,12 @@
   "name": "bs-promise",
   "version": "0.1.0",
   "sources": [
-    "src",
-    "test"
+    {"dir": "src"},
+    {"dir": "test", "type": "dev"}
   ],
-  "bs-dependencies" : [
+  "bs-dependencies" : [],
+  "bs-dev-dependencies" : [
     "bs-tape"
-      // add your bs-dependencies here 
   ],
   "bsc-flags": ["-bs-super-errors"]
 }
