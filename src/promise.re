@@ -1,5 +1,6 @@
 type t 'err 'a;
 
+external _new : (('a => unit) => ('x => unit) => unit) => t 'x 'a = "Promise" [@@bs.new];
 external _map : t 'x 'a => ('a => 'b) => t 'x 'b = "then" [@@bs.send];
 external _chain : t 'x 'a => ('a => t 'x 'b) => t 'x 'b = "then" [@@bs.send];
 external _fold : t 'x 'a => ('a => 'b) => ('x => 'b) => t 'x 'b = "then" [@@bs.send];
@@ -29,3 +30,7 @@ let fromOption err opt => switch opt {
 
 
 let fromJs p => _fromjs p (fun x => x);
+
+let make f => _new (fun resolve reject => f reject resolve);
+
+

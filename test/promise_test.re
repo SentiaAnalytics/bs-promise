@@ -41,3 +41,10 @@ test "fold should return a resolved promise from a rejected promise" (fun t => {
   |> Promise.fold (fun _ => "Success") (fun a => a)
   |> Promise.finally (fun _ => ()) (fun x => t.ok (x == "Success"));
 });
+
+
+test "make should create a new Promise" (fun t => {
+  t.plan 1;
+  Promise.make (fun reject resolve => { resolve 5; })
+  |> Promise.finally (fun _ => ()) (fun x => t.ok message::{j|Promise should be 5|j} (x == 5));
+});
