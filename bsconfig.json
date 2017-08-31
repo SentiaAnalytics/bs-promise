@@ -7,7 +7,7 @@
   ],
   "bs-dependencies" : [],
   "bs-dev-dependencies" : [
-    "bs-tape"
+    "bs-sentia-tape"
   ],
   "bsc-flags": ["-bs-super-errors"]
 }
