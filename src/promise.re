@@ -15,7 +15,7 @@ let map f p => _map p f;
 let chain f p => _chain p f;
 let catch f p => _catch p (fun x => reject (f x));
 
-let biMap fail success p => _biMap p success fail;
+let biMap fail success p => _biMap p success (fun err => reject (fail err));
 
 let mapError f p => _biMap p (fun x => x) f;
 
