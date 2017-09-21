@@ -14,6 +14,7 @@ external all : list (t 'err 'a) => t 'err (list 'a) = "all" [@@bs.val] [@@bs.sco
 external _fromjs : Js.Promise.t 'a => ('a => 'a) => t 'x 'a = "then" [@@bs.send];
 let map f p => _map p f;
 let chain f p => _chain p f;
+let bind = chain;
 let catch f p => _catch p (fun x => reject (f x));
 
 let biMap fail success p => _then p success (fun err => reject (fail err));

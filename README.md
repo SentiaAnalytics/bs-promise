@@ -1,16 +1,13 @@
+# bs-promise
 
+promise library for Ocaml/Reason based on javascript promises.
 
-# Build
+example:
+
+```js
+Promise.make (fun reject resolve  => resolve "Hello")
+  |> Promise.map (fun s => s ^ ", World!")
+  |> Promise.finally (fun err => print_endline @@ "Error: " ^ err) (fun s => print_endline s );
 ```
-npm run build
-```
 
-# Watch
-
-```
-npm run watch
-```
-
-
-# Editor
-If you use `vscode`, Press `Windows + Shift + B` it will build automatically
+Read the [promise.rei](/src/Promise.rei) file for the api.
